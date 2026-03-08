@@ -1,32 +1,47 @@
 # Kaboom CLI
 
-A terminal interface for playing **Kaboom**, a strategic memory-based card game powered by the [**`kaboom-core`**](https://github.com/Arnav-Ajay/kaboom-core) engine.
+A command-line interface for interacting with the **Kaboom game engine**, powered by the [**`kaboom-core`**](https://github.com/Arnav-Ajay/kaboom-core) engine.
 
-This project provides a **command-line version of the Kaboom game** for testing, debugging, and quick gameplay without a graphical interface.
+This repository contains an **early-stage terminal interface** used to interact with and test the Kaboom engine without a graphical UI.
 
-It is primarily intended for:
+The CLI is intended primarily as a **development and debugging tool**, and acts as a thin interface layer over the deterministic game engine.
 
-* testing the Kaboom engine
-* validating game mechanics
-* debugging rules and edge cases
-* rapid gameplay during development
-* building AI players and simulations
+---
 
-The CLI uses the **kaboom-core engine**, which contains the full game logic and rules.
+# Status
+
+⚠️ **This project is in early development.**
+
+The CLI is currently being built incrementally to support engine testing and debugging.
+Many gameplay features are still being implemented or refined.
+
+---
+
+# Purpose
+
+The CLI exists primarily to:
+
+* test and validate the Kaboom engine
+* reproduce edge cases during development
+* debug game state transitions
+* allow quick manual gameplay without a graphical interface
+* support future **AI agents and simulation experiments**
+
+All game rules and core mechanics are implemented in **kaboom-core**.
 
 ---
 
 # Architecture
 
-Kaboom is designed with a **layered architecture**.
+Kaboom is designed with a layered architecture.
 
 ```
-kaboom-core        → game engine (rules, state, scoring)
-kaboom-cli         → terminal interface
-kaboom-streamlit   → web interface
+kaboom-core        → deterministic game engine
+kaboom-cli         → command-line interface
+kaboom-ui          → future graphical interface
 ```
 
-The CLI acts as a **thin interface layer** over the engine.
+The CLI forwards user actions to the engine and renders the resulting game state.
 
 ```
 Player Input
@@ -42,35 +57,34 @@ CLI Rendering
 
 This separation ensures:
 
-* the engine remains UI-agnostic
-* multiple interfaces can use the same game logic
-* easier debugging and testing
+* the engine remains **UI-agnostic**
+* multiple interfaces can reuse the same logic
+* debugging and testing remain straightforward
+* simulation tools can run directly on the engine
 
 ---
 
-# Features
+# Current State
 
-Current features:
+The CLI currently provides **basic interaction with the engine** and is primarily used during development.
 
-* Terminal gameplay
-* Player setup
-* Initial card dealing
-* Pre-game peek phase
-* Turn-based play
-* Draw / replace / discard actions
-* Discard pile tracking
-* Instant win detection
-* Kaboom endgame
-* Final score calculation
+Some gameplay mechanics may still be incomplete or evolving as the engine continues to develop.
 
-Planned features:
+---
 
-* Reaction phase mechanics
-* Special card powers
-* Multi-card matching discards
+# Planned Features
+
+Planned improvements include:
+
+* complete gameplay flow support
+* reaction phase mechanics
+* special card powers
+* multi-card discard matching
+* automated tests
 * AI players
-* Game simulation mode
-* Replay logging
+* simulation mode for running multiple games
+* replay logging
+* multiplayer support
 
 ---
 
@@ -78,48 +92,16 @@ Planned features:
 
 Clone the repository:
 
-```bash
+```
 git clone https://github.com/Arnav-Ajay/kaboom-cli.git
 cd kaboom-cli
 ```
 
 Install dependencies:
 
-```bash
+```
 pip install -r requirements.txt
 ```
-
----
-
-# How Kaboom Works
-
-Kaboom is a **memory and strategy card game** played with a standard 52-card deck.
-
-Each player starts with **four face-down cards** and may look at any two of them before the game begins.
-
-Players attempt to **minimize the total value of their cards** while remembering card positions and reacting to discards.
-
-Key mechanics include:
-
-* reaction matching discards
-* card swapping
-* card peeking
-* penalty cards
-* the Kaboom endgame trigger
-
-Full rules are implemented in [`**kaboom-core**`](https://github.com/Arnav-Ajay/kaboom-core).
-
----
-
-# Development
-
-The CLI interface is intentionally simple and exists primarily to:
-
-* validate engine behavior
-* reproduce edge cases
-* test game mechanics quickly
-
-Future interfaces (web, online multiplayer) will use the **same engine**.
 
 ---
 
@@ -142,21 +124,21 @@ kaboom-cli
 
 ---
 
-# Roadmap
+# Development Philosophy
 
-Planned improvements:
+The CLI is intentionally lightweight.
 
-* full reaction window system
-* special card powers
-* automated tests
-* AI players
-* game simulation framework
-* multiplayer support
+Its role is to:
+
+* validate engine behavior
+* provide a debugging surface
+* allow rapid manual testing
+* support future simulation tools
+
+All game logic lives in **kaboom-core**, keeping the interface layer simple and maintainable.
 
 ---
 
 # License
 
 MIT License
-
----
