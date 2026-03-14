@@ -1,0 +1,19 @@
+[project]
+name = "kaboom-cli"
+version = "0.1.0"
+description = "Command-line interface for the Kaboom card game engine."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "kaboom-engine>=0.2.0,<0.3.0",
+]
+
+[project.scripts]
+kaboom-cli = "kaboom_cli.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["kaboom_cli*"]
