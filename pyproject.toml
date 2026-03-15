@@ -5,7 +5,7 @@ description = "Command-line interface for the Kaboom card game engine."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "kaboom-engine>=0.2.0,<0.3.0",
+    "kaboom-engine>=0.3.0,<0.4.0",
 ]
 
 [project.scripts]

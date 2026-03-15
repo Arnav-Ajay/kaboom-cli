@@ -1,6 +1,6 @@
 # Kaboom CLI
 
-`kaboom-cli` is a thin terminal client for `kaboom-engine>=0.2.0`.
+`kaboom-cli` is a thin terminal client for `kaboom-engine>=0.3.0,<0.4.0`.
 
 This first rewrite is intentionally simple:
 
@@ -13,13 +13,14 @@ This first rewrite is intentionally simple:
 
 The CLI is meant to be a manual testing and debugging surface before AI and RL simulation layers are added.
 
-## Core assumptions from `kaboom-engine v0.2.0`
+## Core assumptions from `kaboom-engine v0.3.x`
 
 * the engine owns all game rules and phase transitions
 * a CLI should branch on `GamePhase`, not custom turn flags
 * normal play should rely on `get_valid_actions(state)` for legality
 * `UsePower` is the only action that needs interactive payload collection
-* reaction turns are already represented as legal action objects
+* reaction turns and pending-power resolution are already represented as legal action objects
+* opening peek is part of engine setup, not a CLI-side convention
 
 ## Installation
 
